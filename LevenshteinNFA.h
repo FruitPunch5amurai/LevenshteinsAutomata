@@ -2,6 +2,8 @@
 #define __LEVENSHTEINNFA_H_
 
 #include <list>
+#include <forward_list>
+#include <vector>
 
 namespace LevenshteinAutomata
 {
@@ -14,9 +16,9 @@ namespace LevenshteinAutomata
 
 		enum Constants
 		{
-			Deletion = '1',   
+			Deletion = '|',
 			Dead = '\0',
-			Insertion = '0'
+			Insertion = '~'
 		};
 		static LevenshteinNFA* ConstructNFA(std::string str, int maxDist);
 		void AddTransition(int from, int to, char input);
@@ -25,10 +27,9 @@ namespace LevenshteinAutomata
 
 		int initialState;
 		std::list<int> finalStates;
-		std::list<char> inputs;
-		char** transTable;
-
-	private:
+		std::forward_list<char> inputs;
+		std::vector<char> *transTable;
+		//char** transTable;
 		int size;
 	};
 }

@@ -8,8 +8,10 @@ typedef struct TrieNode
 {
 	struct TrieNode* children[ALPHABET_SIZE];
 	bool isEndWord;
+	char key;
+	std::string  value;
 }TrieNode;
-TrieNode* getNode();
+TrieNode *getNode(char key, std::string value);
 
 class Trie
 {
